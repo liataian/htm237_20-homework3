@@ -1,0 +1,134 @@
+// Import all the variables into the main css file.
+@import "variables";
+
+// I gather this file is a starting point for the project.
+@import "bootstrap";
+
+@import "compass";
+
+
+// gd- prefix:
+// A prefix (stands for "grabikon design") chosen to avoid class name collisions
+// with Twitter Bootstrap class names.
+
+.gd-header{
+  
+  z-index:1; //給予較高樓層(z-index預設是0)，讓網頁往下滑時上緣部分不會被下面內容蓋住
+  
+  // 課堂練習2與4
+  
+  ul{
+   list-style-type:none;
+   padding-left:0;
+  }
+  
+  //「.gd-header」被套用了bootstrap的「.affix」後的外觀  
+  &.affix{
+    top:0; //貼齊上緣
+    left:0; //貼齊左邊
+    right:0; //貼齊右邊
+	//以上等於置中?
+	background: $body-bg; //網頁往下滑時上緣部分(AGENTUR,SERVICE,KONTAKT)背景套用的顏色
+	@include box-shadow(0 0 16px rgba(0,0,0,0.15)); //網頁往下滑時上緣部分背景套用的效果
+	
+	h1{
+	  display:none; //讓GrabikonDesign這個slogan在網頁往下滑時消失
+	}
+	
+	ul{
+	 margin-top:1em; //網頁往下滑時讓上緣部分與最頂端間隔一些距離
+	}
+	
+    // The next element should have a top-margin so that the entire page
+    // dont jump high when .affix is applied.
+	
+	//當有了「.addix」後防止後面元素有瞬間往上飛的感覺
+     + *{
+      margin-top: 126px;
+     }
+  }
+}
+
+.gd-jumbotron{
+
+  // 課堂練習5
+
+  background:image-url('slider.png'); //在中間的背景加上slider.png圖片
+  background-size:cover; //加上這行後在縮放網頁時，背景圖片也會一起縮放，而不是固定在那
+  h2 span{
+    padding: 0 0.25em;
+    font-size: 72px;
+    line-height: 100px;
+    background: rgba(#000, 0.6);
+    color: #fff;
+    font-weight: normal;
+  }
+}
+
+.gd-expertise{
+
+  //課堂練習6
+  
+  dt{
+    font-weight: normal;
+  }
+  dd{
+    margin-left: 0;
+  }
+  .progress{
+    margin-bottom: 3px;
+    height: 14px;
+    @include border-radius(0px);
+    @include box-shadow(none);
+  }
+  .progress-striped .bar{
+    background-color: #5BC0DE;
+  }
+}
+
+.gd-well{
+  margin: 5em 0;
+  h3{
+    margin-top: 0;
+  }
+  p{
+    margin-bottom: 0;
+  }
+  .btn{
+    margin-top: 15px;
+  }
+}
+
+.gd-service{
+  background: image-url('dark-bg.jpg');
+  padding: 5em 0;
+  margin-bottom: 5em;
+
+  h1{
+    color: #fff;
+  }
+
+  .gd-service-item{
+    height: 550px;
+    border: 1px solid #666;
+    background: #000;
+    color: #fff;
+	padding: 1em;
+  }
+
+  
+  // 課堂練習7
+
+  .glyphicon{
+   font-size:100px;
+  }
+}
+
+.gd-contact{
+  padding-bottom: 5em;
+}
+
+#gd-map-canvas{
+  width: 100%;
+  height: 360px;
+}
